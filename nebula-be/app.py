@@ -4,9 +4,10 @@ from keycloak_utils import (
     delete_user, assign_role_to_user, remove_role_from_user, reset_password, logout_user,refresh_access_token
 )
 import datetime
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # This enables CORS for all routes
 
 # Login Route (Already Implemented)
 @app.route("/login", methods=["POST"])
@@ -14,6 +15,8 @@ def login():
     data = request.json
     username = data.get("username")
     password = data.get("password")
+    print("username",username)
+    print("password",password)
 
     if not username or not password:
         return jsonify({"error": "Username and password required"}), 400
