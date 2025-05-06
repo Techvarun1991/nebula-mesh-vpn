@@ -64,7 +64,6 @@ export default function Login() {
     setCredentials({username: email, password: password});
     if (email && password && !emailError && !passwordError) {
       const response = await login(credentials)
-      // console.log("Response: ", response);
       if (response) {
         navigate('/dashboard')
       }
